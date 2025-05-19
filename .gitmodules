@@ -7,3 +7,4 @@
 [submodule "sfizz"]
 	path = sfizz
 	url = https://github.com/sfztools/sfizz.git
+ignore = dirty
