@@ -16,9 +16,9 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 #ifndef DROPS_DIMENSIONS_INCLUDED
-#define DROPS_DIMENSIONS_INCLUDED
+ #define DROPS_DIMENSIONS_INCLUDED
 
-#include "Geometry.hpp"
+ #include "DistrhoPlugin.hpp"
 
 START_NAMESPACE_DISTRHO
 
@@ -36,4 +36,4 @@ extern const unsigned int sample_inout_font_size;
 
 END_NAMESPACE_DISTRHO
 
-#endif
+ #endif

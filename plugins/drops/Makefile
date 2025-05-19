@@ -29,11 +29,11 @@ NAME = drops
 # Files to build
 
 FILES_DSP = \
-			DropsPlugin.cpp
+			DropsPlugin.cpp \
+			DropsGeometry.cpp
 
 FILES_UI  = \
 			DropsUI.cpp \
-			DropsGeometry.cpp \
 			widgets/src/TextButton.cpp \
 			widgets/src/ScrollBar.cpp \
 			widgets/src/Knob.cpp \

@@ -372,8 +372,8 @@ void DropsUI::initWidgets()
     const float padding = bounds.getWidth();
     fSamplePitch->right_padding = padding;
     fSamplePitch->format_str = "%.f";
-    fSamplePitch->min_value = -100.0f;
-    fSamplePitch->max_value = 100.0f;
+    fSamplePitch->min_value = -10000.0f;
+    fSamplePitch->max_value = 10000.0f;
     fSamplePitch->default_value = 0.0f;
 
     /* turn of sample pitching and play every note with the pitch of the
