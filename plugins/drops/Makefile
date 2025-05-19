@@ -34,6 +34,7 @@ FILES_DSP = \
 
 FILES_UI  = \
 			DropsUI.cpp \
+			DropsGeometry.cpp \
 			widgets/src/TextButton.cpp \
 			widgets/src/ScrollBar.cpp \
 			widgets/src/Knob.cpp \

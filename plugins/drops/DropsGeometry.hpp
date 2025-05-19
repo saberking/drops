@@ -19,6 +19,7 @@
  #define DROPS_DIMENSIONS_INCLUDED
 
  #include "DistrhoPlugin.hpp"
+ #include "Geometry.hpp"
 
 START_NAMESPACE_DISTRHO
 

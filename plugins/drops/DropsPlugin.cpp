@@ -18,7 +18,6 @@
 
 #include "DistrhoPlugin.hpp"
 #include "DropsPlugin.hpp"
-#include "DropsGeometry.hpp"
 
 START_NAMESPACE_DISTRHO
 
@@ -159,8 +158,8 @@ void DropsPlugin::initParameter(uint32_t index, Parameter &parameter)
         parameter.name = "Pitch";
         parameter.symbol = "pitch";
         parameter.ranges.min = 0.0f;
-        parameter.ranges.max = 2000.0f;
-        parameter.ranges.def = 1000.0f;
+        parameter.ranges.max = 200.0f;
+        parameter.ranges.def = 100.0f;
         parameter.hints = kParameterIsAutomable | kParameterIsInteger;
         break;
     case kSamplePlayMode:
@@ -1023,7 +1022,6 @@ void DropsPlugin::bufferSizeChanged(uint32_t newBufferSize)
 
 int DropsPlugin::loadSample(const char *fp)
 {
-    int test=display_height;
     // init waveform and miniMap
     waveForm.resize(0);
     miniMap.resize(0);
@@ -1064,7 +1062,7 @@ int DropsPlugin::loadSample(const char *fp)
         for (int i = 0, j = 0; i < size; i++)
         {
             float sum_mono = (sample[j] + sample[j + 1]) * 0.5f;
-            waveForm.push_back((sum_mono * ratio) * float(test/ 2));
+            waveForm.push_back((sum_mono * ratio) * float(display_height / 2));
             j += 2;
         }
     }
@@ -1073,16 +1071,16 @@ int DropsPlugin::loadSample(const char *fp)
         waveForm.resize(size);
         for (int i = 0; i < size; i++)
         {
-            waveForm[i] = (sample[i] * ratio) * float(100 / 2);
+            waveForm[i] = (sample[i] * ratio) * float(display_height / 2);
         }
     }
 
     // make minimap
-    miniMap.resize(100);
-    float samples_per_pixel = static_cast<float>(sampleLength) / (float)100;
+    miniMap.resize(display_width);
+    float samples_per_pixel = static_cast<float>(sampleLength) / (float)display_width;
     float fIndex;
     uint iIndex;
-    for (uint16_t i = 0; i < 100; i++)
+    for (uint16_t i = 0; i < display_width; i++)
     {
         fIndex = float(i) * samples_per_pixel;
         iIndex = fIndex;
@@ -1090,7 +1088,7 @@ int DropsPlugin::loadSample(const char *fp)
         signed char min = std::abs(*minmax.first);
         signed char max = std::abs(*minmax.second);
         signed char maxValue = std::max(min, max);
-        miniMap[i] = (float)maxValue / (float)(100 / 2) * (float)100;
+        miniMap[i] = (float)maxValue / (float)(display_height / 2) * (float)minimap_height;
     }
     sig_sampleLoaded = true;
     loadedSample = true;
